@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.3
+// @version      0.1.4
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=hools.online
+// @updateURL    https://raw.githubusercontent.com/MrDastanDanik/hools/main/script.js
 // @grant        none
 // ==/UserScript==
 

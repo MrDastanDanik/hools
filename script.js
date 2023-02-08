@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -35,14 +35,20 @@ switch (stor) {
               //  $(location).attr('href', $(".row a")[9].href);
             //}
 
+
             var findText = "Выполнить";
             var $elements = $(".container *").filter(function(){
                 return $(this).html() == findText;
             });
             $elements.each(function() { this.click() });
 
-            findText = "Я берусь!"
-            $elements.each(function() { this.click() });
+            if($(".row b")[1].innerText < "600") {
+                findText = "Я берусь!"
+                $elements = $(".container *").filter(function(){
+                    return $(this).html() == findText;
+                });
+                $elements.each(function() { this.click() });
+            }
         }
         break;
 }

@@ -17,21 +17,28 @@
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
     let path = location.pathname;
+    let pause;
+
+    if(work < 20) {
+        pause = (20-work)*30000;
+    } else {
+        pause = 540000;
+    }
 
     let findText;
     let $elements;
 
     switch (path) {
         case '/game':
-            if (health >=35) {
+            if (health >= 35) {
+                console.log($(location).attr('href', "district"));
                 $(location).attr('href', "district")
-            } else if (work >=20) {
+            } else if (work >= 20) {
                 $(location).attr('href', "work")
             }
             break;
         case '/district':
-
-            if (health >=35) {
+            if (health >= 35) {
                 for (let i = 0; i <= 2; i++) {
                     if($(".col-8")[i].children[0].innerText == "Кузьминишна" || "Бородач" || "Копченый" || "Егор" || "Копченый"){
                         $(location).attr('href', $(".col-8")[i].children[2].children[0].href);
@@ -42,11 +49,10 @@
             }
             break;
         case '/work':
-            if (work >=20 ) {
+            if (work >= 20) {
                 if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
                     $(location).attr('href', $(".row a")[9].href);
                 }
-
 
                 findText = "Выполнить";
                 $elements = $(".container *").filter(function(){
@@ -60,10 +66,10 @@
                         return $(this).html() == findText;
                     });
                     $elements.each(function() { this.click() });
-            }
-        } else {
+                }
+            } else {
                 $(location).attr('href', "game")
-        }
+            }
             break;
         default:
             $(location).attr('href', "game")
@@ -72,7 +78,7 @@
 
     setInterval(function(){
         location.reload();
-    }, (20-work)*30000);
+    }, pause)
     console.log((work-20)*30);
 
 })();

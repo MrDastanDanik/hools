@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.7
+// @version      0.1.8
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -16,7 +16,7 @@
 
     setInterval(function(){
         location.reload();
-    }, 540000)
+    }, 60000)
 
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
@@ -24,18 +24,6 @@
     let path = location.pathname;
     let pause = 0;
     let date = new Date();
-
-
-
-    if (((35-health)*30000) > ((20-work)*28000)) {
-        pause = (20-work)*28000;
-        console.log("work:"+(20-work)*28000);
-        console.log(pause);
-    } else {
-        console.log("health:"+(35-health)*28000);
-        pause = (35-health)*28000;
-        console.log(pause);
-    }
 
     let findText;
     let $elements;
@@ -83,7 +71,17 @@
             break;
         default:
             $(location).attr('href', "game")
-
     }
+
+    if (((35-health)*30000) > ((20-work)*27500)) {
+        pause = (20-work)*27500;
+        console.log("work:"+(20-work)*27500);
+        console.log(pause);
+    } else {
+        console.log("health:"+(35-health)*27500);
+        pause = (35-health)*27500;
+        console.log(pause);
+    }
+
 }
 )();

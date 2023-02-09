@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.9
+// @version      0.1.10
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -20,8 +20,6 @@
     let path = location.pathname;
     let pause = 60000;
     let date = new Date();
-
-    setTimeout(function(){location.reload()}, pause)
 
     let findText;
     let $elements;
@@ -75,10 +73,12 @@
         pause = (20-work)*27500;
         console.log("work:"+(20-work)*27500);
         console.log(pause);
-    } else {
+    } else if (((35-health)*30000) < ((20-work)*27500)) {
         console.log("health:"+(35-health)*27500);
         pause = (35-health)*27500;
         console.log(pause);
+    } else {
+        setTimeout(function(){location.reload()}, 60000)
     }
 
 }

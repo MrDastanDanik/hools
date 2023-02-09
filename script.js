@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.12
+// @version      0.1.13
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -101,9 +101,26 @@
         case '/home':
             setInterval(function(){$(location).attr('href', "game")}, 60000)
             break;
-        case '/':
+        case '/football':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
             break;
-        case '/':
+        case '/market':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
+            break;
+        case '/mag':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
+            break;
+        case '/tatu':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
+            break;
+        case '/loto':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
+            break;
+        case '/prom-weapon':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
+            break;
+        case '/prom-clothing':
+            setInterval(function(){$(location).attr('href', "game")}, 60000)
             break;
         case '/':
             break;

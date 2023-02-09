@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.8
+// @version      0.1.9
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -14,16 +14,14 @@
 (function() {
     'use strict';
 
-    setInterval(function(){
-        location.reload();
-    }, 60000)
-
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
 
     let path = location.pathname;
-    let pause = 0;
+    let pause = 60000;
     let date = new Date();
+
+    setTimeout(function(){location.reload()}, pause)
 
     let findText;
     let $elements;

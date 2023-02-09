@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.13
+// @version      0.1.14
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -14,33 +14,34 @@
 (function() {
     'use strict';
 
-    let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
-    let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
+    setTimeout(function () {
+        let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
+        let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
 
-    let path = location.pathname;
-    let pause;
-    let date = new Date();
+        let path = location.pathname;
+        let pause;
+        let date = new Date();
 
-    let findText;
-    let $elements;
+        let findText;
+        let $elements;
 
-    switch (path) {
+switch (path) {
         case '/game':
-            if (health >= 35) {
-                $(location).attr('href', "district")
-            } else if (work >= 20 && date.getHours() < 23) {
-                $(location).attr('href', "work")
-            } else {
-                if ((35-health)*27000 > (20-work)*27000) {
-                    setInterval(function(){location.reload()}, (20-work)*27000)
-                    console.log("work:\n"+date+"\n"+((20-work)*27)/60);
-                } else if (((35-health)*27000) < ((20-work)*27000)) {
-                    setInterval(function(){location.reload()}, (35-health)*27000)
-                    console.log("health:\n"+date+"\n"+((35-health)*27)/60);
+                if (health >= 35) {
+                    $(location).attr('href', "district")
+                } else if (work >= 20 && date.getHours() < 23) {
+                    $(location).attr('href', "work")
                 } else {
-                    setInterval(function(){location.reload()}, 60000)
+                    if ((35-health)*27000 > (20-work)*27000) {
+                        setInterval(function(){location.reload()}, (20-work)*27000)
+                        console.log("work:\n"+date+"\n"+((20-work)*27)/60);
+                    } else if (((35-health)*27000) < ((20-work)*27000)) {
+                        setInterval(function(){location.reload()}, (35-health)*27000)
+                        console.log("health:\n"+date+"\n"+((35-health)*27)/60);
+                    } else {
+                        setInterval(function(){location.reload()}, 60000)
+                    }
                 }
-            }
             break;
         case '/district':
             if (health >= 35) {
@@ -55,24 +56,24 @@
             break;
         case '/work':
             if (work >= 20 && date.getHours() < 23) {
-                    if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
-                        $(location).attr('href', $(".row a")[9].href);
-                    }
-
-                    findText = "Выполнить";
-                    $elements = $(".container *").filter(function(){
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() { this.click() });
-
-                    findText = "Я берусь!"
-                    $elements = $(".container *").filter(function(){
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() { this.click() });
-                } else {
-                    $(location).attr('href', "game")
+                if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
+                    $(location).attr('href', $(".row a")[9].href);
                 }
+
+                findText = "Выполнить";
+                $elements = $(".container *").filter(function(){
+                    return $(this).html() == findText;
+                });
+                $elements.each(function() { this.click() });
+
+                findText = "Я берусь!"
+                $elements = $(".container *").filter(function(){
+                    return $(this).html() == findText;
+                });
+                $elements.each(function() { this.click() });
+            } else {
+                $(location).attr('href', "game")
+            }
             break;
         case '/task':
             setInterval(function(){$(location).attr('href', "game")}, 60000)
@@ -129,5 +130,5 @@
         default:
             $(location).attr('href', "game")
     }
-}
-)();
+
+    }, 2000);})();

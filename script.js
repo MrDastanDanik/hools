@@ -38,7 +38,7 @@
             if (health >= 35) {
                 console.log($(location).attr('href', "district"));
                 $(location).attr('href', "district")
-            } else if (work >= 20) {
+            } else if (work >= 20 && date.getHours() < 23) {
                 $(location).attr('href', "work")
             }
             break;

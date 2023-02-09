@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.4
+// @version      0.1.5
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -21,20 +21,19 @@
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
     let path = location.pathname;
-    let pause;
+    let pause = 0;
     let date = new Date();
 
-    if (date.getHours() < 23) {
-        if(work < 20) {
-            pause = (20-work)*30000;
-} else {
-    pause = 540000;
+    if (((35-health)*30000) > ((20-work)*30000)) {
+        pause = (20-work)*30000;
+    } else {
+        pause = (35-health)*30000;
     }
 
-        let findText;
+    let findText;
         let $elements;
 
-        switch (path) {
+    switch (path) {
         case '/game':
             if (health >= 35) {
                 console.log($(location).attr('href', "district"));
@@ -42,49 +41,42 @@
             } else if (work >= 20) {
                 $(location).attr('href', "work")
             }
-                break;
-            case '/district':
-                if (health >= 35) {
-                    for (let i = 0; i <= 2; i++) {
-                        if($(".col-8")[i].children[0].innerText == "Кузьминишна" || "Бородач" || "Копченый" || "Егор" || "Копченый"){
+            break;
+        case '/district':
+            if (health >= 35) {
+                for (let i = 0; i <= 2; i++) {
+                    if($(".col-8")[i].children[0].innerText == "Кузьминишна" || "Бородач" || "Копченый" || "Егор" || "Копченый"){
                         $(location).attr('href', $(".col-8")[i].children[2].children[0].href);
-                        }
                     }
-                } else {
-                    $(location).attr('href', "game")
-                }
-                break;
-            case '/work':
-                if (work >= 20) {
-                if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
-                    $(location).attr('href', $(".row a")[9].href);
-                }
-
-                    findText = "Выполнить";
-                $elements = $(".container *").filter(function(){
-                    return $(this).html() == findText;
-                });
-                    $elements.each(function() { this.click() });
-
-                    if($(".row b")[1].innerText < "600") {
-                        findText = "Я берусь!"
-                        $elements = $(".container *").filter(function(){
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() { this.click() });
                 }
             } else {
                 $(location).attr('href', "game")
+            }
+            break;
+        case '/work':
+                if (work >= 20 && date.getHours() < 23) {
+                    if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
+                        $(location).attr('href', $(".row a")[9].href);
+                    }
+
+                    findText = "Выполнить";
+                    $elements = $(".container *").filter(function(){
+                        return $(this).html() == findText;
+                    });
+                    $elements.each(function() { this.click() });
+
+                    findText = "Я берусь!"
+                    $elements = $(".container *").filter(function(){
+                            return $(this).html() == findText;
+                        });
+                    $elements.each(function() { this.click() });
+                } else {
+                    $(location).attr('href', "game")
             }
             break;
         default:
             $(location).attr('href', "game")
 
     }
-
-        setInterval(function(){
-        location.reload();
-    }, pause)
-    console.log((work-20)*30);
-    }
-})();
+}
+)();

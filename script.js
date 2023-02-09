@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.10
+// @version      0.1.11
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -18,7 +18,7 @@
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
 
     let path = location.pathname;
-    let pause = 60000;
+    let pause;
     let date = new Date();
 
     let findText;
@@ -27,10 +27,19 @@
     switch (path) {
         case '/game':
             if (health >= 35) {
-                console.log($(location).attr('href', "district"));
                 $(location).attr('href', "district")
             } else if (work >= 20 && date.getHours() < 23) {
                 $(location).attr('href', "work")
+            } else {
+                if ((35-health)*27000 > (20-work)*27000) {
+                    setInterval(function(){location.reload()}, (20-work)*27000)
+                    console.log("work:\n"+date+"\n"+((20-work)*27)/60);
+                } else if (((35-health)*27000) < ((20-work)*27000)) {
+                    setInterval(function(){location.reload()}, (35-health)*27000)
+                    console.log("health:\n"+date+"\n"+((35-health)*27)/60);
+                } else {
+                    setInterval(function(){location.reload()}, 60000)
+                }
             }
             break;
         case '/district':
@@ -45,7 +54,7 @@
             }
             break;
         case '/work':
-                if (work >= 20 && date.getHours() < 23) {
+            if (work >= 20 && date.getHours() < 23) {
                     if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
                         $(location).attr('href', $(".row a")[9].href);
                     }
@@ -63,23 +72,11 @@
                     $elements.each(function() { this.click() });
                 } else {
                     $(location).attr('href', "game")
-            }
+                }
             break;
         default:
             $(location).attr('href', "game")
     }
-
-    if (((35-health)*30000) > ((20-work)*27500)) {
-        pause = (20-work)*27500;
-        console.log("work:"+(20-work)*27500);
-        console.log(pause);
-    } else if (((35-health)*30000) < ((20-work)*27500)) {
-        console.log("health:"+(35-health)*27500);
-        pause = (35-health)*27500;
-        console.log(pause);
-    } else {
-        setTimeout(function(){location.reload()}, 60000)
-    }
-
 }
 )();
+   

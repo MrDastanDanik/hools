@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.6
+// @version      0.1.7
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/*
@@ -25,17 +25,20 @@
     let pause = 0;
     let date = new Date();
 
-    console.log("health:"+(35-health)*30000);
-    console.log("work:"+(20-work)*30000);
 
-    if (((35-health)*30000) > ((20-work)*30000)) {
-        pause = (20-work)*30000;
+
+    if (((35-health)*30000) > ((20-work)*28000)) {
+        pause = (20-work)*28000;
+        console.log("work:"+(20-work)*28000);
+        console.log(pause);
     } else {
-        pause = (35-health)*30000;
+        console.log("health:"+(35-health)*28000);
+        pause = (35-health)*28000;
+        console.log(pause);
     }
 
     let findText;
-        let $elements;
+    let $elements;
 
     switch (path) {
         case '/game':
@@ -71,8 +74,8 @@
 
                     findText = "Я берусь!"
                     $elements = $(".container *").filter(function(){
-                            return $(this).html() == findText;
-                        });
+                        return $(this).html() == findText;
+                    });
                     $elements.each(function() { this.click() });
                 } else {
                     $(location).attr('href', "game")

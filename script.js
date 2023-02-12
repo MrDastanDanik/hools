@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
-// @version      0.1.15
+// @version      0.1.17
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/game
@@ -27,9 +27,7 @@
         let findText;
         let $elements;
 
-        if ($('h1').innerText == "502 Bad Gateway") {location.reload()}
-
-        if(date.getHours() == 23){work=0}
+        if(date.getHours() >= 21){work=0}
 
         switch (path) {
             case '/game':
@@ -58,7 +56,6 @@
                         }
                     }
                 } else {
-                    //$(location).attr('href', "football")
                     $(location).attr('href', "game")
                 }
                 break;
@@ -80,12 +77,36 @@
                     });
                     $elements.each(function() { this.click() });
                 } else {
-                    $(location).attr('href', "game")
+                    $(location).attr('href', "football")
+                    //$(location).attr('href', "game")
                 }
                 break;
             case '/football':
-                if ( $(".row p")[10].innerText.indexOf("Ты недавно играл уже") == 0) {
+                var ney = "football?play=1";
+                var massy = "football?play=2";
+                var ronny = "football?play=3";
 
+                console.log($(".row p")[10].innerText.indexOf("Нэй") == 0);
+                console.log(rub > 99);
+
+                if ($(".row p")[10].innerText.indexOf("Нэй") == 0) {
+                    if (rub > 9 && rub < 99) {
+                        $(location).attr('href', ney)
+                    } else if (rub > 99 ) {
+                        $(location).attr('href', massy)
+                    } /*else if (rub > 199) {
+                        $(location).attr('href', ronny)
+                    }*/ else {$(location).attr('href', "game")}
+                } else {
+                    $(location).attr('href', "game")
+                }
+                break;
+                case '/football-play':
+                console.log($(".row p")[10].innerText.indexOf("mrDastan") == 0);
+                if ($(".row p")[10].innerText.indexOf("mrDastan") == 0) {
+                    //var kik = "football-play?kick=" + Math.floor(Math.random() * 2)+1;
+                    var kik = "football-play?kick=0";
+                    $(location).attr('href', kik);
                 } else {
                     $(location).attr('href', "game")
                 }
@@ -115,7 +136,7 @@
                 setInterval(function(){$(location).attr('href', "game")}, 20000)
                 break;
             case '/home':
-                setInterval(function(){$(location).attr('href', "game")}, 20000)
+                setInterval(function(){$(location).attr('href', "game")}, 5000)
                 break;
             case '/football':
                 setInterval(function(){$(location).attr('href', "game")}, 20000)

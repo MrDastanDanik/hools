@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         New Userscript
+// @name         Hools
 // @namespace    http://tampermonkey.net/
-// @version      0.1.17
+// @version      0.1.18
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/game
@@ -19,6 +19,7 @@
         let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
         let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
         let rub = $(".col-auto.align-self-center.mx-auto")[4].innerText;
+        let up = $(".col-auto.align-self-center.mx-auto")[3].innerText.split(/\(/)[1].split(/\%/)[0];
 
         let path = location.pathname;
         let pause = 30000;
@@ -27,7 +28,7 @@
         let findText;
         let $elements;
 
-        if(date.getHours() >= 21){work=0}
+        if(date.getHours() >= 19){work=0}
 
         switch (path) {
             case '/game':
@@ -36,7 +37,10 @@
                 } else if (work >= 20 && date.getHours() < 23) {
                     $(location).attr('href', "work")
                 } else {
-                    if ((35-health)*27000 > (20-work)*27000 && date.getHours() < 23) {
+                    pause = ((35-health)+Math.floor(Math.random() * 10))*27000;
+                    console.log((pause/1000)/60);
+                    setInterval(function(){location.reload()}, pause)
+                    /*if ((35-health)*27000 > (20-work)*27000 && date.getHours() < 23) {
                         console.log("work:\n"+date+"\n"+((20-work)*27)/60);
                         setInterval(function(){location.reload()}, (20-work)*27000)
                     } else if (((35-health)*27000) <= ((20-work)*27000)) {
@@ -45,15 +49,16 @@
                     } else {
                         console.log("else");
                         setInterval(function(){location.reload()}, 60000)
-                    }
+                    }*/
                 }
                 break;
             case '/district':
                 if (health >= 35) {
                     for (let i = 0; i <= 2; i++) {
-                        if($(".col-8")[i].children[0].innerText == "Кузьминишна" || "Бородач" || "Копченый" || "Егор" || "Копченый"){
+                        var opon = $(".col-8")[i].children[0].innerText;
+                        if(opon == "Кузьминишна" || opon == "Бородач" || opon == "Копченый" || opon == "Егор" || opon == "Копченый"){
                             $(location).attr('href', $(".col-8")[i].children[2].children[0].href);
-                        }
+                        } else {location.reload()}
                     }
                 } else {
                     $(location).attr('href', "game")
@@ -90,11 +95,11 @@
                 console.log(rub > 99);
 
                 if ($(".row p")[10].innerText.indexOf("Нэй") == 0) {
-                    if (rub > 9 && rub < 99) {
-                        $(location).attr('href', ney)
-                    } else if (rub > 99 ) {
+                    if (rub > 99 && up < 90) {
                         $(location).attr('href', massy)
-                    } /*else if (rub > 199) {
+                    } else if (rub > 9) {
+                        $(location).attr('href', ney)
+                    }  /*else if (rub > 199) {
                         $(location).attr('href', ronny)
                     }*/ else {$(location).attr('href', "game")}
                 } else {
@@ -104,8 +109,8 @@
                 case '/football-play':
                 console.log($(".row p")[10].innerText.indexOf("mrDastan") == 0);
                 if ($(".row p")[10].innerText.indexOf("mrDastan") == 0) {
-                    //var kik = "football-play?kick=" + Math.floor(Math.random() * 2)+1;
-                    var kik = "football-play?kick=0";
+                    var kik = "football-play?kick=" + Math.floor(Math.random() * 2)+1;
+                    //var kik = "football-play?kick=0";
                     $(location).attr('href', kik);
                 } else {
                     $(location).attr('href', "game")

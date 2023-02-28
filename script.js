@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hools
 // @namespace    http://tampermonkey.net/
-// @version      0.1.18
+// @version      0.1.19
 // @description  try to take over the world!
 // @author       You
 // @match        https://hools.online/game
@@ -66,7 +66,7 @@
                 break;
             case '/work':
                 if (work >= 20 && date.getHours() < 23) {
-                    if ($(".row a")[9].text== "Я берусь!" || "Выполнить"){
+                    if ($(".row a")[9].text == "Я берусь!" || $(".row a")[9].text == "Выполнить"){
                         $(location).attr('href', $(".row a")[9].href);
                     }
 

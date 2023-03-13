@@ -62,7 +62,7 @@ setTimeout(function () {
                         return $(this).html() == findText;
 						});
 						$elements.each(function() { this.click() });
-                    }
+                    } $(location).attr('href', "football")
                 } else {
                     $(location).attr('href', "football")
                 }

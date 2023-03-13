@@ -50,19 +50,19 @@ setTimeout(function () {
                 if (work >= 20 && date.getHours() < 23) {
                     if ($(".row a")[9].text == "Я берусь!" || $(".row a")[9].text == "Выполнить"){
                         $(location).attr('href', $(".row a")[9].href);
+						
+						findText = "Выполнить";
+						$elements = $(".container *").filter(function(){
+                        return $(this).html() == findText;
+						});
+						$elements.each(function() { this.click() });
+
+						findText = "Я берусь!"
+						$elements = $(".container *").filter(function(){
+                        return $(this).html() == findText;
+						});
+						$elements.each(function() { this.click() });
                     }
-
-                    findText = "Выполнить";
-                    $elements = $(".container *").filter(function(){
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() { this.click() });
-
-                    findText = "Я берусь!"
-                    $elements = $(".container *").filter(function(){
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() { this.click() });
                 } else {
                     $(location).attr('href', "football")
                 }

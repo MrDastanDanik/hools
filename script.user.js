@@ -20,8 +20,7 @@ setTimeout(function () {
                 } else if (work >= 20 && date.getHours() < 23) {
                     $(location).attr('href', "work")
                 } else {
-                    pause = ((35-health)+Math.floor(Math.random() * 3))*27000;
-                    console.log((pause/1000)/60);
+                    pause = ((35-health)+Math.floor(Math.random() * 10))*27000;
                     setInterval(function(){location.reload()}, pause)
                     /*if ((35-health)*27000 > (20-work)*27000 && date.getHours() < 23) {
                         console.log("work:\n"+date+"\n"+((20-work)*27)/60);
@@ -66,7 +65,6 @@ setTimeout(function () {
                     $elements.each(function() { this.click() });
                 } else {
                     $(location).attr('href', "football")
-                    //$(location).attr('href', "game")
                 }
                 break;
             case '/football':
@@ -74,11 +72,8 @@ setTimeout(function () {
                 var massy = "football?play=2";
                 var ronny = "football?play=3";
 
-                console.log($(".row p")[10].innerText.indexOf("Нэй") == 0);
-                console.log(rub > 99);
-
-                if ($(".row p")[10].innerText.indexOf("Нэй") == 0) {
-                    if (rub > 99 && up < 90 && up > 10) {
+                if ($(".row p")[10].innerText.indexOf("Нэй") == 0 || $(".row p")[10].innerText.indexOf("Масси") == 0) {
+                    if (rub > 99 && up < 85) {
                         $(location).attr('href', massy)
                     } else if (rub > 9) {
                         $(location).attr('href', ney)
@@ -90,8 +85,8 @@ setTimeout(function () {
                 }
                 break;
                 case '/football-play':
-                console.log($(".row p")[10].innerText.indexOf("mrDastan") == 0);
-                if ($(".row p")[10].innerText.indexOf("mrDastan") == 0) {
+				var foot = $(".row p")[10].innerText;
+                if (foot.indexOf("Масси") != -1 || foot.indexOf("Нэй") != -1 || foot.indexOf("Ронни") != -1) {
                     var kik = "football-play?kick=" + Math.floor(Math.random() * 2)+1;
                     //var kik = "football-play?kick=0";
                     $(location).attr('href', kik);

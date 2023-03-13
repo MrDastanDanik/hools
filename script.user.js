@@ -52,7 +52,7 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }
             break;
-        case '/fight':
+        case '/fight?*':
             if (health >= 35) {
                 $(location).attr('href', "district")
             } else {

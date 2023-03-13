@@ -98,7 +98,8 @@ setTimeout(function() {
                 }
                 /*else if (rub > 199) {$(location).attr('href', ronny)}*/
                 else {
-                    $(location).attr('href', "game")
+                    //$(location).attr('href', "game")
+					$(location).attr('href', "strongbox")
                 }
             } else {
                 //$(location).attr('href', "game")

@@ -90,7 +90,7 @@ setTimeout(function() {
             var massy = "football?play=2";
             var ronny = "football?play=3";
 
-            if ($(".row p")[10].innerText.indexOf("Нэй") == 0 || $(".row p")[10].innerText.indexOf("Масси") == 0) {
+            if ($(".row p")[10].innerText.indexOf("Нэй") == 0 || $(".row p")[10].innerText.indexOf("Масси") == 0 || $(".row p")[10].innerText.indexOf("Ронни") == 0) {
                 if (rub > 99 && up < 85) {
                     $(location).attr('href', massy)
                 } else if (rub > 9) {
@@ -98,11 +98,9 @@ setTimeout(function() {
                 }
                 /*else if (rub > 199) {$(location).attr('href', ronny)}*/
                 else {
-                    //$(location).attr('href', "game")
                     $(location).attr('href', "strongbox")
                 }
             } else {
-                //$(location).attr('href', "game")
                 $(location).attr('href', "strongbox")
             }
             break;
@@ -113,13 +111,17 @@ setTimeout(function() {
                 //var kik = "football-play?kick=0";
                 $(location).attr('href', kik);
             } else {
-                //$(location).attr('href', "game")
                 $(location).attr('href', "strongbox")
             }
             break;
         case '/strongbox':
             var cur = $('p')[11].innerText.split(/\ /)[3];
             var max = $('.col-9 b')[1].innerText.split(/\./)[1];
+
+			console.log('cur: ' + cur);
+			console.log('max: ' + max);
+			console.log('rub > 100 && max < cur ' + rub > 100 && max < cur);
+			console.log('rub - 100: ' + rub - 100);
 
             if (rub > 100 && max < cur) {
                 $('input')[0].value = rub - 100;

@@ -113,7 +113,8 @@ setTimeout(function() {
                 //var kik = "football-play?kick=0";
                 $(location).attr('href', kik);
             } else {
-                $(location).attr('href', "game")
+                //$(location).attr('href', "game")
+                $(location).attr('href', "strongbox")
             }
             break;
         case '/strongbox':

@@ -121,7 +121,8 @@ setTimeout(function() {
                 var max = $('.col-9 b')[1].innerText.split(/\./)[1];
 
                 if (rub > 100 && max < cur) {
-                    $('input')[0].value = 1;
+					
+                    $('input')[0].value = rub-100;
                     $('.btn')[8].click();
                 } else {
                     $(location).attr('href', "game")

@@ -115,7 +115,7 @@ setTimeout(function() {
             }
             break;
         case '/strongbox':
-            var cur = $('p')[11].innerText.split(/\ /)[3];
+            var cur = $('form p')[1].innerText.split(/\ /)[3];;
             var max = $('.col-9 b')[1].innerText.split(/\./)[1];
 
 			console.log('cur: ' + cur);

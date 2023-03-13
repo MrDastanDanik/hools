@@ -52,7 +52,7 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }
             break;
-			case '/fight':
+        case '/fight':
             if (health >= 35) {
                 $(location).attr('href', "district")
             } else {
@@ -101,7 +101,8 @@ setTimeout(function() {
                     $(location).attr('href', "game")
                 }
             } else {
-                $(location).attr('href', "game")
+                //$(location).attr('href', "game")
+                $(location).attr('href', "strongbox")
             }
             break;
         case '/football-play':
@@ -114,6 +115,19 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }
             break;
+        case '/strongbox':
+            setInterval(function() {
+                var cur = $('p')[11].innerText.split(/\ /)[3];
+                var max = $('.col-9 b')[1].innerText.split(/\./)[1];
+
+                if (rub > 100 && max < cur) {
+                    $('input')[0].value = 1;
+                    $('.btn')[8].click();
+                } else {
+                    $(location).attr('href', "game")
+                }
+            }, 20000)
+            break
         case '/task':
             setInterval(function() {
                 $(location).attr('href', "game")

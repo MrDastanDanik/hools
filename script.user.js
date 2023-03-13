@@ -61,26 +61,13 @@ setTimeout(function() {
             break;
         case '/work':
             if (work >= 20 && date.getHours() < 23) {
-                if ($(".row a")[9].text == "Я берусь!" || $(".row a")[9].text == "Выполнить") {
-                    $(location).attr('href', $(".row a")[9].href);
-
-                    findText = "Выполнить";
-                    $elements = $(".container *").filter(function() {
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() {
-                        this.click()
-                    });
-
-                    findText = "Я берусь!"
-                    $elements = $(".container *").filter(function() {
-                        return $(this).html() == findText;
-                    });
-                    $elements.each(function() {
-                        this.click()
-                    });
+                if ($('.row .btn')[9].innerText == "Я берусь!") {
+                    $(location).attr('href', "work?start=true");
+                } else if ($('.row .btn')[9].innerText == "Выполнить") {
+                    $(location).attr('href', "work?status=go");
+                } else {
+                    $(location).attr('href', "football")
                 }
-                $(location).attr('href', "football")
             } else {
                 $(location).attr('href', "football")
             }
@@ -118,10 +105,10 @@ setTimeout(function() {
             var cur = $('form p')[1].innerText.split(/\ /)[3];;
             var max = $('.col-9 b')[1].innerText.split(/\./)[1];
 
-			console.log('cur: ' + cur);
-			console.log('max: ' + max);
-			console.log('rub > 100 && max < cur ' + rub > 100 && max < cur);
-			console.log('rub - 100: ' + rub - 100);
+            console.log('cur: ' + cur);
+            console.log('max: ' + max);
+            console.log('rub > 100 && max < cur ' + rub > 100 && max < cur);
+            console.log('rub - 100: ' + rub - 100);
 
             if (rub > 100 && max < cur) {
                 $('input')[0].value = rub - 100;

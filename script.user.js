@@ -11,7 +11,7 @@ setTimeout(function() {
     let findText;
     let $elements;
 
-    if (date.getHours() >= 22) {
+    if (date.getHours() >= 23) {
         work = 0
     }
 
@@ -48,6 +48,13 @@ setTimeout(function() {
                         location.reload()
                     }
                 }
+            } else {
+                $(location).attr('href', "game")
+            }
+            break;
+			case '/fight':
+            if (health >= 35) {
+                $(location).attr('href', "district")
             } else {
                 $(location).attr('href', "game")
             }
@@ -89,9 +96,7 @@ setTimeout(function() {
                 } else if (rub > 9) {
                     $(location).attr('href', ney)
                 }
-                /*else if (rub > 199) {
-                                      $(location).attr('href', ronny)
-                                  }*/
+                /*else if (rub > 199) {$(location).attr('href', ronny)}*/
                 else {
                     $(location).attr('href', "game")
                 }
@@ -152,7 +157,7 @@ setTimeout(function() {
         case '/home':
             setInterval(function() {
                 $(location).attr('href', "game")
-            }, 5000)
+            }, 20000)
             break;
         case '/football':
             setInterval(function() {

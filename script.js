@@ -1,21 +1,4 @@
-// ==UserScript==
-// @name         Hools
-// @namespace    http://tampermonkey.net/
-// @version      0.1.19
-// @description  try to take over the world!
-// @author       You
-// @match        https://hools.online/game
-// @match        https://hools.online/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=hools.online
-// @downloadURL  https://raw.githubusercontent.com/MrDastanDanik/hools/main/script.js
-// @updateURL    https://raw.githubusercontent.com/MrDastanDanik/hools/main/script.js
-// @grant        none
-// ==/UserScript==
-
-(function() {
-    'use strict';
-
-    setTimeout(function () {
+setTimeout(function () {
         let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
         let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
         let rub = $(".col-auto.align-self-center.mx-auto")[4].innerText;
@@ -28,7 +11,7 @@
         let findText;
         let $elements;
 
-        if(date.getHours() >= 19){work=0}
+        if(date.getHours() >= 22){work=0}
 
         switch (path) {
             case '/game':
@@ -37,7 +20,7 @@
                 } else if (work >= 20 && date.getHours() < 23) {
                     $(location).attr('href', "work")
                 } else {
-                    pause = ((35-health)+Math.floor(Math.random() * 10))*27000;
+                    pause = ((35-health)+Math.floor(Math.random() * 3))*27000;
                     console.log((pause/1000)/60);
                     setInterval(function(){location.reload()}, pause)
                     /*if ((35-health)*27000 > (20-work)*27000 && date.getHours() < 23) {
@@ -95,7 +78,7 @@
                 console.log(rub > 99);
 
                 if ($(".row p")[10].innerText.indexOf("Нэй") == 0) {
-                    if (rub > 99 && up < 90) {
+                    if (rub > 99 && up < 90 && up > 10) {
                         $(location).attr('href', massy)
                     } else if (rub > 9) {
                         $(location).attr('href', ney)
@@ -170,4 +153,4 @@
                 $(location).attr('href', "game")
         }
 
-    }, 2000);})();
+    }, 2000);

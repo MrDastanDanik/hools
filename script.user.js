@@ -1,4 +1,4 @@
-// @version      0.1.27
+// @version      0.1.28
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -39,6 +39,16 @@ setTimeout(function() {
                     setInterval(function(){location.reload()}, 60000)
                 }*/
             }
+            console.log(pause);
+            Math.floor(((pause/1000)/60)) +":"+ (((pause/1000))-(Math.floor((pause/1000)/60)*60))
+
+            setInterval(function() {
+                var timer = new Date();
+                timer.setMinutes((pause/1000)/60);
+                timer.setSeconds(((pause/1000))-(Math.floor((pause/1000)/60)*60))
+                $('.col-auto.align-self-center.mx-auto p')[0].innerText = timer.getMinutes() +":"+ timer.getSeconds()
+                pause = pause-1000;
+            }, 1000)
             break;
         case '/district':
             if (health >= 35) {

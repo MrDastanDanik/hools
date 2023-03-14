@@ -1,4 +1,4 @@
-// @version      0.1.25
+// @version      0.1.26
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
@@ -53,7 +53,8 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }
             break;
-        case '/fight'*:
+        case '/fight':
+            alert('sa');
             if (health >= 35) {
                 $(location).attr('href', "district")
             } else {
@@ -62,9 +63,9 @@ setTimeout(function() {
             break;
         case '/work':
             if (work >= 20 && date.getHours() < 23) {
-                if ($('.row .btn')[9].innerText == "Я берусь!") {
+                if ($('.row')[10].children[0].children[0].innerText == "Я берусь!") {
                     $(location).attr('href', "work?start=true&name=");
-                } else if ($('.row .btn')[9].innerText == "Выполнить") {
+                } else if ($('.row')[10].children[0].children[0].innerText == "Выполнить") {
                     $(location).attr('href', "work?status=go");
                 } else {
                     $(location).attr('href', "football")

@@ -1,3 +1,5 @@
+//version 0.1.21
+
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;
@@ -52,7 +54,7 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }
             break;
-        case '/fight?*':
+        case '/fight*':
             if (health >= 35) {
                 $(location).attr('href', "district")
             } else {

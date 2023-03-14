@@ -62,7 +62,7 @@ setTimeout(function() {
         case '/work':
             if (work >= 20 && date.getHours() < 23) {
                 if ($('.row .btn')[9].innerText == "Я берусь!") {
-                    $(location).attr('href', "work?start=true");
+                    $(location).attr('href', "work?start=true&name=");
                 } else if ($('.row .btn')[9].innerText == "Выполнить") {
                     $(location).attr('href', "work?status=go");
                 } else {

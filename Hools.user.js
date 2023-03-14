@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Hools
-// @version      0.1.3
+// @version      0.1.30
 // @description  try to take over the world!
 // @author       DaniilShe
 // @match        https://hools.online/*

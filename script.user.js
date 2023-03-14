@@ -1,5 +1,5 @@
 // @version      0.1.22
-
+alert('test');
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
     let health = $(".col-auto.align-self-center.mx-auto")[7].innerText;

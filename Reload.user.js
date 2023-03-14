@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reload
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.2
 // @description  try to take over the world!
 // @author       DaniilShe
 // @match        http://*/*
@@ -14,9 +14,13 @@
     'use strict';
 
     setInterval(function() {
+        location.reload();
+    }, (20*60)*1000)
+
+    setInterval(function() {
         if ($('h1').innerText == "502 Bad Gateway") {
             location.reload();
         }
-    }, 20000)
+    }, 5000)
 
 })();

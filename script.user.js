@@ -55,7 +55,6 @@ setTimeout(function() {
             }
             break;
         case '/fight':
-            alert('sa');
             if (health >= 35) {
                 $(location).attr('href', "district")
             } else {

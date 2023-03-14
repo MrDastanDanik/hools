@@ -1,4 +1,4 @@
-//version 0.1.21
+//version 0.1.22
 
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;

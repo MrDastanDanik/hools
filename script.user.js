@@ -209,6 +209,21 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }, 20000)
             break;
+			case '/bets':
+            setInterval(function() {
+                $(location).attr('href', "game")
+            }, 60000)
+            break;
+			case '/bets-history':
+            setInterval(function() {
+                $(location).attr('href', "game")
+            }, 60000)
+            break;
+			ase '/bet-match':
+            setInterval(function() {
+                $(location).attr('href', "game")
+            }, 60000)
+            break;
         case '/':
             break;
         default:

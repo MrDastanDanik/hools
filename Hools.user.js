@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Hools
-// @version      0.1.30
+// @version      0.1.31
 // @description  try to take over the world!
 // @author       DaniilShe
 // @match        https://hools.online/*
@@ -13,5 +13,15 @@
 // ==/UserScript==
 (function() {
     'use strict';
+
+     setInterval(function() {
+        location.reload();
+    }, (20*60)*1000)
+
+    setInterval(function() {
+        if ($('h1').innerText == "502 Bad Gateway") {
+            location.reload();
+        }
+    }, 5000)
 
 })();

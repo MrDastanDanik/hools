@@ -1,4 +1,4 @@
-// @version      0.1.32
+// @version      0.1.33
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -219,7 +219,7 @@ setTimeout(function() {
                 $(location).attr('href', "game")
             }, 60000)
             break;
-			ase '/bet-match':
+			case '/bet-match':
             setInterval(function() {
                 $(location).attr('href', "game")
             }, 60000)

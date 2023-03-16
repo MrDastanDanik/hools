@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reload
 // @namespace    http://tampermonkey.net/
-// @version      0.1.23
+// @version      0.1.25
 // @description  try to take over the world!
 // @author       DaniilShe
 // @match        http://*/*
@@ -18,8 +18,9 @@
     }, (20*60)*1000)
 
     setInterval(function() {
-        if ($('h1').innerText == "502 Bad Gateway") {
+        if (document.getElementsByTagName('h1')[0].innerText == "502 Bad Gateway") {
             location.reload();
+            console.log(document.getElementsByTagName('h1')[0].innerText);
         }
     }, 5000)
 

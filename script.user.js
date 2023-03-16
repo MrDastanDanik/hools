@@ -1,4 +1,4 @@
-// @version      0.1.35
+// @version      0.1.36
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -114,15 +114,10 @@ setTimeout(function() {
             }
             break;
         case '/strongbox':
-            var cur = $('form p')[1].innerText.split(/\ /)[3];;
-            var max = $('.col-9 b')[1].innerText.split(/\./)[1];
+            var curBox = $('form p')[1].innerText.split(/\ /)[3];
+            var maxBox = $('.col-9 b')[1].innerText.split(/\. /)[1];
 
-            console.log('cur: ' + cur);
-            console.log('max: ' + max);
-            console.log('rub > 100 && max < cur ' + rub > 100 && max < cur);
-            console.log('rub - 100: ' + rub - 100);
-
-            if (rub > 100 && max < cur) {
+            if (rub > 100 && maxBox < curBox) {
                 $('input')[0].value = rub - 100;
                 $("button[name='operation']")[0].click();
             } else {

@@ -1,4 +1,4 @@
-// @version      0.1.36
+// @version      0.1.37
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -117,9 +117,14 @@ setTimeout(function() {
             var curBox = $('form p')[1].innerText.split(/\ /)[3];
             var maxBox = $('.col-9 b')[1].innerText.split(/\. /)[1];
 
-            if (rub > 100 && maxBox < curBox) {
-                $('input')[0].value = rub - 100;
-                $("button[name='operation']")[0].click();
+            if (rub > 100 && curBox < maxBox) {
+                if ((rub - 100) < (maxBox - curBox)) {
+                    $('input')[0].value = rub - 100;
+                    $("button[name='operation']")[0].click();
+                } else {
+                    $('input')[0].value = maxBox - curBox;
+                    $("button[name='operation']")[0].click();
+                }
             } else {
                 $(location).attr('href', "game")
             }

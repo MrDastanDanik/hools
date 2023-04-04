@@ -1,4 +1,4 @@
-// @version      0.1.39
+// @version      0.1.40
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -73,9 +73,9 @@ setTimeout(function() {
             break;
         case '/work':
             if (work >= 20 && date.getHours() < 23) {
-                if ($('.row')[10].children[0].children[0].innerText == "Я берусь!") {
+                if ($('.row')[9].children[0].children[0].innerText == "Я берусь!") {
                     $(location).attr('href', "work?start=true&name=");
-                } else if ($('.row')[10].children[0].children[0].innerText == "Выполнить") {
+                } else if ($('.row')[9].children[0].children[0].innerText == "Выполнить") {
                     $(location).attr('href', "work?status=go");
                 } else {
                     $(location).attr('href', "football")

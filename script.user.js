@@ -1,4 +1,4 @@
-// @version      0.1.40
+// @version      0.1.41
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -24,7 +24,9 @@ setTimeout(function() {
             } else if (work >= 20 && date.getHours() < 23) {
                 $(location).attr('href', "work")
             } else {
-                pause = ((35 - health) + Math.floor(Math.random() * 10)) * 27000;
+                if (date.getHours() <= 6 && date.getHours() >= 1) {
+                    pause = (((100 - health) + Math.floor(Math.random() * 10)) * 27000);
+                } else {pause = ((35 - health) + Math.floor(Math.random() * 10)) * 27000;}
                 setInterval(function() {
                     location.reload()
                 }, pause)
@@ -90,7 +92,7 @@ setTimeout(function() {
             var ronny = "football?play=3";
 
             if ($(".row p")[10].innerText.indexOf("Нэй") == 0 || $(".row p")[10].innerText.indexOf("Масси") == 0 || $(".row p")[10].innerText.indexOf("Ронни") == 0) {
-                if (rub > 99 && up < 70 && up > 10) {
+                if (rub > 99 && up < 75) {
                     $(location).attr('href', massy)
                 } else if (rub > 9) {
                     $(location).attr('href', ney)

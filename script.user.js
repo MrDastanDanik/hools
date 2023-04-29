@@ -1,4 +1,5 @@
-// @version      0.1.41
+// @version      0.1.42
+/*
 $(".btn.justify-content-center.align-items-center.align-content-center.align-self-center.mx-auto")[0].children[0].src = "https://icon-icons.com/downloadimage.php?id=4068&root=38/PNG/32/&file=closeupmode_close_4630.png"
 setTimeout(function() {
     let work = $(".col-auto.align-self-center.mx-auto")[8].innerText;
@@ -39,7 +40,7 @@ setTimeout(function() {
                 } else {
                     console.log("else");
                     setInterval(function(){location.reload()}, 60000)
-                }*/
+                }*//*
             }
             console.log(pause);
             Math.floor(((pause/1000)/60)) +":"+ (((pause/1000))-(Math.floor((pause/1000)/60)*60))
@@ -97,7 +98,7 @@ setTimeout(function() {
                 } else if (rub > 9) {
                     $(location).attr('href', ney)
                 }
-                /*else if (rub > 199) {$(location).attr('href', ronny)}*/
+                /*else if (rub > 199) {$(location).attr('href', ronny)}*//*
                 else {
                     $(location).attr('href', "strongbox")
                 }
@@ -233,3 +234,4 @@ setTimeout(function() {
     }
 
 }, 2000);
+*/
